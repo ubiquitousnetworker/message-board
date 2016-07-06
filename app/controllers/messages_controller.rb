@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       redirect_to root_path , notice: 'メッセージを保存しました'
     else
       # メッセージが保存出来なかった時
-      @message = Message.all
+      @messages = Message.all
       flash.now[:alert] = "メッセージの保存に失敗しました。"
       render 'index'
     end 
@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
   
   private
   def message_params
-    params.require(:message).permit(:name, :body)
+    params.require(:message).permit(:name, :body, :age)
   end
   
   def set_message
